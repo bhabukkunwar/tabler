@@ -4,8 +4,10 @@ import './Header.css'
 import logo from "./images/logo.png";
 import SearchIcon from '@material-ui/icons/Search';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
+import {useStateValue} from "./StateProvider";
 
 function Header() {
+    const [{basket}] = useStateValue();
     return (
         <nav className="header">
             <Link>
@@ -18,6 +20,7 @@ function Header() {
             </div>
 
             <div className="header__nav">
+             
 
                 <Link to="/login" className="header__link">
                     <div className="header__option">
@@ -32,13 +35,14 @@ function Header() {
                         <span className="header__option__line2">& bookings</span>
                     </div>
                 </Link>
+              
 
             
 
                 <Link to="/checkout" className="header__link">
                     <div className="header__optionBasket">
                         <LocalMallIcon/>
-                        <span className="header__option__line2 header__basketCount">0</span>
+                        <span className="header__option__line2 header__basketCount">{basket.length}</span>
                     </div>
                 </Link>
 
